@@ -1,4 +1,6 @@
 const fs = require("node:fs");
+const path = require("path");
+const filePath = path.join(__dirname, "../Models/quotes.json");
 
 
 
@@ -35,7 +37,33 @@ const getQuotes=(req, res) => {
     });
   }
 
+  const updateQuotes=(req,res)=>{
+    fs.readFile(filePath,"utf8",(err,data) =>{
+      if(err){
+
+        return res.status(500).send("Failed to Update the Data");
+      }
+      let quotes =JSON.parse(data);//parse JSON data into an array
+      let quoteId=req.params["id"]; //get quote ID from req parameters
+      let theUpdatedQuote=req.body;//get updated quote from req body
+     
+    })
+
+    if (quoteId >= 0&& quoteId < quotes.length) {
+      quotes[quoteId] = theUpdatedQuote; // Update the specific quote
+
+    fs.writeFile(JSON.stringify(quotes,null,2),(err)=>{
+      if(err){
+        res.send(`Quote ID:${quoteId} Updated Successfully`)
+      }
+      res.status(200).send(`Quote ID:${quoteId} NOT updated`)
+    });
+
+
+  } }
+
   module.exports={
     createQuotes,
-    getQuotes
+    getQuotes,
+    updateQuotes
   }
