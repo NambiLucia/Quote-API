@@ -1,5 +1,14 @@
-[{
-    "id":1,
-    "quote":"Dont comment bad code,rewrite it"
-    
-}]
+[
+  {
+    "id": 1,
+    "quote": "Dont comment bad code,rewrite it"
+  },
+  {
+    "id": 2,
+    "quote": "Ruby is rubbish! PHP is phpantastic!"
+  },
+  {
+    "id": 3,
+    "quote": "Code is like humor. When you have to explain it, it’s bad."
+  }
+]
