@@ -105,24 +105,10 @@ const updateQuotesById = (req, res) => {
 };
 
 const deleteQuotesById = (req, res) => {
-  let deleteQuoteId = parseInt(req.params["id"]);
-  let quotes = JSON.parse(data);
-  const quoteToDelete= quotes.find(element =>element.id ===id);
-  const index =quotes.indexOf(quoteToDelete);
-  quotes.splice(index,1);
-  
-  s.writeFile(filePath,JSON.stringify(quotes, null, 2), (err) => {
-    if (err) {
-   
-     return res.status(404).send(`Quote ID:${quoteId} NOT updated`);
-    }
-    
-    
-  res.status(200).send(`Quote ID:${quoteId} Updated Successfully`);
-
-  });
-  
-
+  const quotes = JSON.parse(fs.readFileSync(filePath));
+  const filteredQuotes = quotes.filter(q => q.id !== parseInt(req.params.id));
+  fs.writeFileSync(filePath, JSON.stringify(filteredQuotes));
+  res.status(204).send();
 
 };
 
