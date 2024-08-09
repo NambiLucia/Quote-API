@@ -14,20 +14,20 @@ const getQuotes = (req, res) => {
 const getQuotesById=(req,res)=>{
   fs.readFile(filePath,"utf8",(err,data)=>{
     if(err){
-      res.status(500).send("Failed to retrieve Data")
+      return res.status(500).send("Failed to retrieve Data")
     }
       let quotes=JSON.parse(data);
-      let quoteId=req.params["id"];
+      let quoteId=parseInt(req.params.id,10);
+     res.send(quoteId);
       if (quoteId >= 0 && quoteId < quotes.length) {
-        res.status(200).json(quotes[quoteId]); // Return the specific quote as JSON
+        
+      return res.status(200).json(quotes[quoteId]); // Return the specific quote as JSON
       } else {
         res.status(404).send("Quote not found");
       }
 
 
   })
-
-
 
 
 }
@@ -60,9 +60,18 @@ const updateQuotesById = (req, res) => {
     if (err) {
       return res.status(500).send("Failed to Update the Data");
     }
+    
     let quotes = JSON.parse(data); //parse JSON data into an array
+    
     let quoteId = parseInt(req.params["id"]); //get quote ID from req parameters
+    
     let theUpdatedQuote = req.body; //get updated quote from req body
+    
+    console.log(quotes);
+    console.log(quoteId);
+    console.log(theUpdatedQuote);
+
+
 
   //if quoteID is valid
   if (quoteId >= 0 && quoteId < quotes.length) {
@@ -70,9 +79,12 @@ const updateQuotesById = (req, res) => {
 
     fs.writeFile(filePath,JSON.stringify(quotes, null, 2), (err) => {
       if (err) {
-        res.status(200).send(`Quote ID:${quoteId} Updated Successfully`);
+     
+       return res.status(404).send(`Quote ID:${quoteId} NOT updated`);
       }
-      res.status(404).send(`Quote ID:${quoteId} NOT updated`);
+      
+ res.status(200).send(`Quote ID:${quoteId} Updated Successfully`);
+
     });
   }
 

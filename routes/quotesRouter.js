@@ -6,9 +6,11 @@ const quotesRouter = express.Router();
 const quoteController = require("../controllers/quoteController");
 
 //quote get requests
-quotesRouter.get("/", quoteController.getQuotes);
+//quotesRouter.get("/", quoteController.getQuotes);
+quotesRouter.get("/:id", quoteController.getQuotesById);
 
 quotesRouter.post("/", quoteController.createQuotes);
-quotesRouter.put("/", quoteController.updateQuotes);
+quotesRouter.put("/:id", quoteController.updateQuotesById);
+
 
 module.exports = quotesRouter;
