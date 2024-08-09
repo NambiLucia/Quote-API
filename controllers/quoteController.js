@@ -105,9 +105,9 @@ const updateQuotesById = (req, res) => {
 };
 
 const deleteQuotesById = (req, res) => {
-  const quotes = JSON.parse(fs.readFileSync(quotesFilePath));
+  const quotes = JSON.parse(fs.readFileSync(filePath));
   const filteredQuotes = quotes.filter(q => q.id !== parseInt(req.params.id));
-  fs.writeFileSync(FilePath, JSON.stringify(filteredQuotes));
+  fs.writeFileSync(filePath, JSON.stringify(filteredQuotes));
   res.status(204).send();
 };
 
