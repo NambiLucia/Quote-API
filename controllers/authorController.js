@@ -105,7 +105,6 @@ const updateAuthorsById = (req, res) => {
 // Delete author by ID
 const deleteAuthorsById = (req, res) => {
   
-  let deleteAuthorId = parseInt(req.params["id"]);
   let authors = JSON.parse(data);
   let authorId = parseInt(req.params["id"]);
   const authorToDelete= authors.find(element =>element.id === authorId);
