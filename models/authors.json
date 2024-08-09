@@ -1,11 +1,15 @@
 [
   {
-    "id": 1,
-    "author": "Brian W. Kernighan"
+    "id": 3,
+    "author": "Steve Jobs"
   },
   {
     "id": 2,
     "author": "Steve Jobs"
+  },
+  {
+    "id": "2",
+    "author": "Cory House"
   },
   {
     "id": "2",
