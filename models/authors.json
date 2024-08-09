@@ -1,1 +1,10 @@
-{}
+[
+  {
+    "id": 1,
+    "author": "Brian W. Kernighan"
+  },
+  {
+    "id": 2,
+    "author": "Steve Jobs"
+  }
+]
