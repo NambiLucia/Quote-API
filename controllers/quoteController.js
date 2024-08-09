@@ -17,14 +17,24 @@ const getQuotesById=(req,res)=>{
       return res.status(500).send("Failed to retrieve Data")
     }
       let quotes=JSON.parse(data);
-      let quoteId=parseInt(req.params.id,10);
-     res.send(quoteId);
+      let quoteId=parseInt(req.params.id);
+      let quote=quotes.find((q)=>q.id ===quoteId)
+
+    
+     
       if (quoteId >= 0 && quoteId < quotes.length) {
-        
-      return res.status(200).json(quotes[quoteId]); // Return the specific quote as JSON
+        if(quote) {
+            return res.status(200).json(quote); // Return the specific quote as JSON
+        }
+        else{
+          return res.status(404).send("Quote not found");
+        }
+  
       } else {
-        res.status(404).send("Quote not found");
+
+       return res.status(404).send("Quote not found");
       }
+
 
 
   })
@@ -70,9 +80,9 @@ const updateQuotesById = (req, res) => {
     console.log(quotes);
     console.log(quoteId);
     console.log(theUpdatedQuote);
-
-
-
+    if (!req.body || Object.keys(req.body).length === 0) {
+      return res.status(400).send("Request body is missing or empty");
+    }
   //if quoteID is valid
   if (quoteId >= 0 && quoteId < quotes.length) {
     quotes[quoteId] = theUpdatedQuote; // Update the specific quote
@@ -83,7 +93,8 @@ const updateQuotesById = (req, res) => {
        return res.status(404).send(`Quote ID:${quoteId} NOT updated`);
       }
       
- res.status(200).send(`Quote ID:${quoteId} Updated Successfully`);
+      
+    res.status(200).send(`Quote ID:${quoteId} Updated Successfully`);
 
     });
   }
@@ -93,9 +104,19 @@ const updateQuotesById = (req, res) => {
 
 };
 
+const deleteQuotesById = (req, res) => {
+  const quotes = JSON.parse(fs.readFileSync(quotesFilePath));
+  const filteredQuotes = quotes.filter(q => q.id !== parseInt(req.params.id));
+  fs.writeFileSync(FilePath, JSON.stringify(filteredQuotes));
+  res.status(204).send();
+};
+
+
+
 module.exports = {
   createQuotes,
   getQuotes,
   updateQuotesById,
-  getQuotesById
+  getQuotesById,
+  deleteQuotesById
 };
