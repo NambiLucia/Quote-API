@@ -1,15 +1,15 @@
 const fs = require("node:fs");
 const path = require("path");
-const filePath = path.join(__dirname, "../Models/quotes.json");
+const filePath = path.resolve(__dirname, "../Models/quotes.json");
 
 const getQuotes = (req, res) => {
-  const quotes = JSON.parse(fs.readFileSync(filePath));
+  const quotes = JSON.parse(fs.readFileSync(filePath));// read file
   res.json(quotes);
 };
 
 const getQuotesById = (req, res) => {
   const quotes = JSON.parse(fs.readFileSync(filePath));
-  const quote = quotes.find(q => q.id === parseInt(req.params.id));
+  const quote = quotes.find(q => q.id === parseInt(req.params.id)); //where quote id equals the id specified
   if (quote) {
       res.json(quote);
   } else {
@@ -30,7 +30,7 @@ const updateQuotesById = (req, res) => {
   const quotes = JSON.parse(fs.readFileSync(filePath));
   const index = quotes.findIndex(q => q.id === parseInt(req.params.id));
   if (index !== -1) {
-      quotes[index] = { id: quotes[index].id, ...req.body };
+      quotes[index] = { id: quotes[index].id, ...req.body }; //add request body to the quote with the index
       fs.writeFileSync(filePath, JSON.stringify(quotes));
       res.json(quotes[index]);
   } else {
