@@ -48,9 +48,9 @@ const deleteQuotesById = (req, res) => {
 
 
 module.exports = {
-  createQuotes,
   getQuotes,
+   getQuotesById,
+  createQuotes,
   updateQuotesById,
-  getQuotesById,
   deleteQuotesById
 };

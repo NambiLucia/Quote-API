@@ -2,15 +2,14 @@ const express = require("express");
 const path = require("path");
 //deal with quote requests
 const authorsRouter = express.Router();
-const authorController = require("../controllers/authorController");
+const { getAuthors, getAuthorsById, createAuthors, updateAuthorsById, deleteAuthorsById } = require('../controllers/authorController');
 
 //quote get requests
-authorsRouter.get("/", authorController.getAuthors);
-authorsRouter.get("/:id", authorController.getAuthorsById);
-
-authorsRouter.post("/", authorController.createAuthors);
-authorsRouter.put("/:id", authorController.updateAuthorsById);
-authorsRouter.put("/:id", authorController.deleteAuthorsById);
+authorsRouter.get("/", getAuthors);
+authorsRouter.get("/:id", getAuthorsById);
+authorsRouter.post("/", createAuthors);
+authorsRouter.put("/:id", updateAuthorsById);
+authorsRouter.delete("/:id", deleteAuthorsById);
 
 
 module.exports = authorsRouter;
