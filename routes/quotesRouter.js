@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 //deal with quote requests
 const quotesRouter = express.Router();
 const quoteController = require("../controllers/quoteController");
