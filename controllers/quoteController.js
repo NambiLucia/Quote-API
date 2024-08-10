@@ -18,9 +18,10 @@ const getQuotesById = (req, res) => {
 };
 
 const createQuotes = (req, res) => {
-  const quotes = JSON.parse(fs.readFileSync(filePath));
-  const newQuote = { id: Date.now(), ...req.body };
-  quotes.push(newQuote);
+  const quotes = JSON.parse(fs.readFileSync(filePath));// readfile
+  const newQuote = { id: Date.now(), ...req.body }; //create new quote
+  quotes.push(newQuote);//add it to array
+//save it
   fs.writeFileSync(filePath, JSON.stringify(quotes));
   res.status(201).json(newQuote);
 };
