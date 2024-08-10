@@ -1,7 +1,7 @@
 # Quote API
 - Welcome to the Quote API! This API allows you to manage a collection of quotes and authors by providing endpoints to create, read, update, and delete quotes. The API is built with Node.js, express and uses JSON for data storage.
 # Features
-- Retrieve all quotes
+- Retrieve all quotes.
 - Retrieve a single quote by ID
 - Add a new quote
 - Update an existing quote by ID
