@@ -1,6 +1,6 @@
 const fs = require("node:fs");
 const path = require("path");
-const filePath = path.join(__dirname, "../Models/quotes.json");
+const filePath = path.join(__dirname, "../models/quotes.json");
 
 const getQuotes = (req, res) => {
   const quotes = JSON.parse(fs.readFileSync(filePath));// read file
