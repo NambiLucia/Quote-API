@@ -5,9 +5,8 @@ const authorsRouter = express.Router();
 const authorController = require("../controllers/authorController");
 
 //quote get requests
-authorsRouter.get("/:id", authorController.getAuthorsById);
 authorsRouter.get("/", authorController.getAuthors);
-
+authorsRouter.get("/:id", authorController.getAuthorsById);
 
 authorsRouter.post("/", authorController.createAuthors);
 authorsRouter.put("/:id", authorController.updateAuthorsById);

@@ -144,3 +144,5 @@
 ::1 - - [10/Aug/2024:07:22:57 +0000] "GET /quotes/ HTTP/1.1" 200 386 "-" "PostmanRuntime/7.41.0"
 ::1 - - [10/Aug/2024:07:24:24 +0000] "DELETE /quotes/2 HTTP/1.1" 404 150 "-" "PostmanRuntime/7.41.0"
 ::1 - - [10/Aug/2024:07:25:57 +0000] "DELETE /quotes/2 HTTP/1.1" 404 150 "-" "PostmanRuntime/7.41.0"
+::1 - - [10/Aug/2024:09:50:02 +0000] "GET /authors/ HTTP/1.1" 200 164 "-" "PostmanRuntime/7.41.0"
+::1 - - [10/Aug/2024:09:50:17 +0000] "DELETE /authors/2 HTTP/1.1" 404 151 "-" "PostmanRuntime/7.41.0"
