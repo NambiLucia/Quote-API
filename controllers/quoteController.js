@@ -40,9 +40,10 @@ const updateQuotesById = (req, res) => {
 
 const deleteQuotesById = (req, res) => {
   const quotes = JSON.parse(fs.readFileSync(filePath));
-  const filteredQuotes = quotes.filter(q => q.id !== parseInt(req.params.id));
+  const filteredQuotes = quotes.filter(q => q.id !== parseInt(req.params.id));//filter out those not deleted
+  //save
   fs.writeFileSync(filePath, JSON.stringify(filteredQuotes));
-  res.status(204).send();
+  res.status(204).send("Deletion successful");
 };
 
 
