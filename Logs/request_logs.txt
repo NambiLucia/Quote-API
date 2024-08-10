@@ -122,3 +122,7 @@
 ::1 - - [10/Aug/2024:07:02:54 +0000] "GET /quotes/ HTTP/1.1" 200 320 "-" "PostmanRuntime/7.41.0"
 ::1 - - [10/Aug/2024:07:03:10 +0000] "GET /quotes/15 HTTP/1.1" 200 30 "-" "PostmanRuntime/7.41.0"
 ::1 - - [10/Aug/2024:07:03:37 +0000] "PUT /quotes/5 HTTP/1.1" 200 29 "-" "PostmanRuntime/7.41.0"
+::1 - - [10/Aug/2024:07:03:47 +0000] "GET /quotes/ HTTP/1.1" 200 320 "-" "PostmanRuntime/7.41.0"
+::1 - - [10/Aug/2024:07:04:07 +0000] "DELETE /quotes/15 HTTP/1.1" 404 151 "-" "PostmanRuntime/7.41.0"
+::1 - - [10/Aug/2024:07:04:23 +0000] "DELETE /quotes/2 HTTP/1.1" 404 150 "-" "PostmanRuntime/7.41.0"
+::1 - - [10/Aug/2024:07:04:28 +0000] "DELETE /quotes/2 HTTP/1.1" 404 150 "-" "PostmanRuntime/7.41.0"
