@@ -1,14 +1,14 @@
 const express = require("express");
 //deal with quote requests
 const quotesRouter = express.Router();
-const { getQuotes, getQuotesById, createQuotes, updateQuotesById, deleteQuotesById } = require('../controllers/quoteController');
+const quoteController = require("../controllers/quoteController");
 
 //quote get requests
-quotesRouter.get("/", getQuotes);
-quotesRouter.get("/:id", getQuotesById);
-quotesRouter.post("/", createQuotes);
-quotesRouter.put("/:id", updateQuotesById);
-quotesRouter.delete("/:id", deleteQuotesById);
+quotesRouter.get("/", quoteController.getQuotes);
+quotesRouter.get("/:id", quoteController.getQuotesById);
+quotesRouter.post("/", quoteController.createQuotes);
+quotesRouter.put("/:id", quoteController.updateQuotesById);
+quotesRouter.delete("/:id", quoteController.deleteQuotesById);
 
 
 module.exports = quotesRouter;
