@@ -9,7 +9,7 @@ const getQuotes = (req, res) => {
 
 const getQuotesById = (req, res) => {
   const quotes = JSON.parse(fs.readFileSync(filePath));
-  const quote = quotes.find(q => q.id === parseInt(req.params.id)); //where quote id equals the id specified
+  const quote = quotes.find(q => q.id === parseInt(req.params.id)); //Find the specific quote with the ID provided in the request parameters
   if (quote) {
       res.json(quote);
   } else {
@@ -19,7 +19,7 @@ const getQuotesById = (req, res) => {
 
 const createQuotes = (req, res) => {
   const quotes = JSON.parse(fs.readFileSync(filePath));// readfile
-  const newQuote = { id: Date.now(), ...req.body }; //create new quote
+  const newQuote = { id: Date.now(), ...req.body }; //create new quote ,unique ID based on the current timestamp
   quotes.push(newQuote);//add it to array
 //save it
   fs.writeFileSync(filePath, JSON.stringify(quotes));
@@ -29,8 +29,9 @@ const createQuotes = (req, res) => {
 const updateQuotesById = (req, res) => {
   const quotes = JSON.parse(fs.readFileSync(filePath));
   const index = quotes.findIndex(q => q.id === parseInt(req.params.id));
+  //checks if quote isnt -1 which makes it valid
   if (index !== -1) {
-      quotes[index] = { id: quotes[index].id, ...req.body }; //add request body to the quote with the index
+      quotes[index] = { id: quotes[index].id, ...req.body }; //add request body to the quote with the index,keep original ID
       fs.writeFileSync(filePath, JSON.stringify(quotes));
       res.json(quotes[index]);
   } else {
