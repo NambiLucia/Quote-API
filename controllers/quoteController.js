@@ -13,36 +13,41 @@ res.json(quotes)
 };
 
 const getQuotesById = async (req, res) => {
+
+  try{
+    const authorId=parseInt(req.params.id);
   const getquotes = await prisma.quote.findUnique({
     where:{
-      id:2
+      id: authorId,
     },
    
   })
-  res.json(getquotes)
-  
+  res.status(200).json({getquotes})
+
+  }
+catch(error){
+  console.log(error)
+}    
 };
 
+
+
 const createQuotes = async (req, res) => {
-  const { text, category, author, authorId } = req.body;
+  
 
-  if (!text || !category || !author || !authorId) {
-    return res.status(400).json({ error: 'All fields are required.' });
-  }
+try{
+   const quoteData = req.body;
 
-  try {
     const newquote = await prisma.quote.create({
       data: {
-        text,
-        category,
-        author,
-        authorId,
+       quoteData,
+
       },
     });
-    res.status(201).json({ message: "Quote created successfully.", newquote });
+     res.status(201).json({ data: newquote });
   } catch (error) {
-    console.error(error); // Log the error for debugging
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.log(error); 
+   
   }
 
 };
@@ -50,15 +55,20 @@ const createQuotes = async (req, res) => {
 
 
 const updateQuotesById = (req, res) => {
-  const quotes = JSON.parse(fs.readFileSync(filePath));
-  const index = quotes.findIndex(q => q.id === parseInt(req.params.id));
-  //checks if quote isnt -1 which makes it valid
-  if (index !== -1) {
-      quotes[index] = { id: quotes[index].id, ...req.body }; //add request body to the quote with the index,keep original ID
-      fs.writeFileSync(filePath, JSON.stringify(quotes));
-      res.json(quotes[index]);
-  } else {
-      res.status(404).json({ message: "Quote not found" });
+  try{
+    const updatedQuote=await.prisma.quote.update({
+      where:{
+        id:parseInt(req.params.id)
+      },
+      data:req.body,
+
+  });
+  if(!updatedQuote) {
+    resturn
+  }
+  }
+  catch(error){
+
   }
 };
 
