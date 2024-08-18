@@ -1,10 +1,13 @@
 const fs = require("node:fs");
+const { PrismaClient } = require("@prisma/client");
 const path = require("path");
 const filePath = path.join(__dirname,"../models/authors.json");
+const prisma = new PrismaClient();
 
-const getAuthors = (req, res) => {
-  const authors = JSON.parse(fs.readFileSync(filePath));// read file
-  res.json(authors);
+const getAuthors = async(req, res) => {
+  let authors=await prisma.author.findMany()
+  res.json(authors)
+    
 };
 
 

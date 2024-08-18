@@ -3,7 +3,7 @@ const express = require("express");
 const quotesRouter = express.Router();
 const quoteController = require("../controllers/quoteController");
 
-//quote get requests
+//quote requests
 quotesRouter.get("/", quoteController.getQuotes);
 quotesRouter.get("/:id", quoteController.getQuotesById);
 quotesRouter.post("/", quoteController.createQuotes);

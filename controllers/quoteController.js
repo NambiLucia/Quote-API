@@ -1,30 +1,44 @@
 const fs = require("node:fs");
+const { PrismaClient } = require("@prisma/client");
 const path = require("path");
 const filePath = path.join(__dirname, "../models/quotes.json");
+const prisma = new PrismaClient();
 
-const getQuotes = (req, res) => {
-  const quotes = JSON.parse(fs.readFileSync(filePath));// read file
-  res.json(quotes);
+
+const getQuotes = async(req, res) => {
+let quotes=await prisma.quote.findMany()
+res.json(quotes)
+  
 };
 
-const getQuotesById = (req, res) => {
-  const quotes = JSON.parse(fs.readFileSync(filePath));
-  const quote = quotes.find(q => q.id === parseInt(req.params.id)); //Find the specific quote with the ID provided in the request parameters
-  if (quote) {
-      res.json(quote);
-  } else {
-      res.status(404).json({ message: "Quote not found" });
+const getQuotesById = async (req, res) => {
+  const getquotes = await prisma.quote.findUnique({
+    where:{
+      id:2
+    },
+   
+  })
+  res.json(getquotes)
+  
+};
+
+const createQuotes = async (req, res) => {
+
+ 
+    const { text,category,author } = req.body; 
+
+    const newquote = await prisma.quote.create({
+      data: {
+        text,
+        category,
+        author
+      },
+    });
+
+    res.status(201).json(newquote);
   }
-};
+ 
 
-const createQuotes = (req, res) => {
-  const quotes = JSON.parse(fs.readFileSync(filePath));// readfile
-  const newQuote = { id: Date.now(), ...req.body }; //create new quote ,unique ID based on the current timestamp
-  quotes.push(newQuote);//add it to array
-//save it
-  fs.writeFileSync(filePath, JSON.stringify(quotes));
-  res.status(201).json(newQuote);
-};
 
 const updateQuotesById = (req, res) => {
   const quotes = JSON.parse(fs.readFileSync(filePath));
