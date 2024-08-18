@@ -1,6 +1,7 @@
 const fs = require("node:fs");
 const { PrismaClient } = require("@prisma/client");
 const path = require("path");
+const { error } = require("node:console");
 const filePath = path.join(__dirname, "../models/quotes.json");
 const prisma = new PrismaClient();
 
@@ -23,21 +24,29 @@ const getQuotesById = async (req, res) => {
 };
 
 const createQuotes = async (req, res) => {
+  const { text, category, author, authorId } = req.body;
 
- 
-    const { text,category,author } = req.body; 
+  if (!text || !category || !author || !authorId) {
+    return res.status(400).json({ error: 'All fields are required.' });
+  }
 
+  try {
     const newquote = await prisma.quote.create({
       data: {
         text,
         category,
-        author
+        author,
+        authorId,
       },
     });
-
-    res.status(201).json(newquote);
+    res.status(201).json({ message: "Quote created successfully.", newquote });
+  } catch (error) {
+    console.error(error); // Log the error for debugging
+    res.status(500).json({ error: 'Internal Server Error' });
   }
- 
+
+};
+
 
 
 const updateQuotesById = (req, res) => {

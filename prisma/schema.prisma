@@ -25,5 +25,5 @@ model Author {
   id      Int     @id @default(autoincrement())
   name    String  @unique
   picture String
-  Quotes   Quote[]
+  quotes   Quote[]
 }
