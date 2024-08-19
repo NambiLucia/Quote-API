@@ -36,17 +36,30 @@ const createQuotes = async (req, res) => {
   
 
 try{
-   const quoteData = req.body;
+
+   const {text,category,author,authorId} = req.body;
+   const authorInt=parseInt(authorId)
+
+   if (!text || !category || !author || isNaN(authorInt)) {
+    return res.status(400).json({ error: 'All fields are required and authorId must be a number.' });
+  }
 
     const newquote = await prisma.quote.create({
       data: {
-       quoteData,
-
+      text,
+      category,
+      author:{
+        create:{
+          name:author,
+          
+        }
+      },
+      authorId:authorInt,
       },
     });
      res.status(201).json({ data: newquote });
   } catch (error) {
-    console.log(error); 
+    console.error(error); 
    
   }
 

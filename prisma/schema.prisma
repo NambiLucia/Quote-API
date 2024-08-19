@@ -24,6 +24,6 @@ model Quote {
 model Author {
   id      Int     @id @default(autoincrement())
   name    String  @unique
-  picture String
+  picture String?
   quotes   Quote[]
 }
