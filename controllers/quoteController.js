@@ -37,10 +37,10 @@ const createQuotes = async (req, res) => {
 
 try{
 
-   const {text,category,author,authorId} = req.body;
-   const authorInt=parseInt(authorId)
+   const {text,category,author} = req.body;
+   //const authorInt=parseInt(authorId)
 
-   if (!text || !category || !author || isNaN(authorInt)) {
+   if (!text || !category || !author ) {
     return res.status(400).json({ error: 'All fields are required and authorId must be a number.' });
   }
 
@@ -54,10 +54,10 @@ try{
           
         }
       },
-      authorId:authorInt,
+ 
       },
     });
-     res.status(201).json({ data: newquote });
+     return res.status(201).json({ data: newquote });
   } catch (error) {
     console.error(error); 
    
