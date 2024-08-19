@@ -67,9 +67,9 @@ try{
 
 
 
-const updateQuotesById = (req, res) => {
+const updateQuotesById = async (req, res) => {
   try{
-    const updatedQuote=await.prisma.quote.update({
+    const updatedQuote = await prisma.quote.update({
       where:{
         id:parseInt(req.params.id)
       },
@@ -77,13 +77,18 @@ const updateQuotesById = (req, res) => {
 
   });
   if(!updatedQuote) {
-    resturn
+    return res.status(404).json({error:"Quote not found"})
   }
+  res.json(updatedQuote)
   }
   catch(error){
+    console.error(error);  
 
   }
 };
+
+
+
 
 const deleteQuotesById = (req, res) => {
   const quotes = JSON.parse(fs.readFileSync(filePath));
