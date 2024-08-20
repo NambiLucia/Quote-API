@@ -26,7 +26,7 @@ const getQuotesById = async (req, res) => {
 
   }
 catch(error){
-  console.log(error)
+  console.error(error)
 }    
 };
 
@@ -63,7 +63,6 @@ try{
   }
 
 };
-
 
 
 const updateQuotesById = async (req, res) => {
@@ -105,7 +104,7 @@ const deleteQuotesById = async(req, res) => {
  }
  catch(error){
   console.log(error);
-  res.status(500).json({error: "Internal Server Error"})
+  return res.status(500).json({error: "Internal Server Error"})
  }
 
 };

@@ -1,52 +1,116 @@
 const fs = require("node:fs");
 const { PrismaClient } = require("@prisma/client");
 const path = require("path");
+const { text } = require("express");
 const filePath = path.join(__dirname,"../models/authors.json");
 const prisma = new PrismaClient();
 
 const getAuthors = async(req, res) => {
-  let authors=await prisma.author.findMany()
+  try{
+    let authors=await prisma.author.findMany({
+      include:{
+        quotes:true
+      }
+  })
   res.json(authors)
-    
+     
+  }
+  catch(error){
+    console.error(error);
+
+  }
+ 
 };
 
 
-const getAuthorsById = (req, res) => {
-  const authors = JSON.parse(fs.readFileSync(filePath));
-  const author = authors.find(a => a.id === parseInt(req.params.id));//where authorid equals the id specified
-  if (author) {
-      res.json(author);
-  } else {
-      res.status(404).json({ message: "Author not found" });
+const getAuthorsById = async (req, res) => {
+  try{
+   const id = parseInt(req.params.id)
+  const getauthor = await prisma.author.findUnique({
+    where:{
+      id: id,
+    },
+    include:{
+      quotes:true,
+    }
+   
+  })
+  res.status(200).json({getauthor})
+
+  }
+catch(error){
+  console.error(error)
+}
+};
+
+
+
+const createAuthors = async(req, res) => {
+  try{
+    const {name,picture,quotes} = req.body;
+    if (!name || !picture || !quotes || !quotes.text || !quotes.category ) {
+      return res.status(400).json({ error: "Name, picture, text, and category are all required fields." });
+    }
+
+    const newauthor =await prisma.author.create({
+      data:{
+        name,
+        picture,
+        quotes:{
+          create:{
+           text:quotes.text,
+           category:quotes.category
+          }
+        }
+
+      }    
+
+    })
+
+    return res.status(201).json({ data: newauthor });
+
+  }
+  catch(error){
+    console.error(error)
   }
 };
 
-const createAuthors = (req, res) => {
-  const authors = JSON.parse(fs.readFileSync(filePath));// readfile
-  const newAuthor = { id: Date.now(), ...req.body }; //create new author
-  authors.push(newAuthor);//add it to array
-  fs.writeFileSync(filePath, JSON.stringify(authors)); //save it
-  res.status(201).json(newAuthor);
-};
-
-const updateAuthorsById = (req, res) => {
-  const authors = JSON.parse(fs.readFileSync(filePath));
-  const index = authors.findIndex(a => a.id === parseInt(req.params.id));
-  if (index !== -1) {
-      authors[index] = { id: authors[index].id, ...req.body }; //add request body to the quote with the index
-      fs.writeFileSync(filePath, JSON.stringify(authors));
-      res.json(authors[index]);
-  } else {
-      res.status(404).json({ message: "Author not found" });
+const updateAuthorsById = async(req, res) => {
+  try{
+    const id = parseInt(req.params.id)
+    const updatedauthor= await prisma.author.update({
+      where:{
+        id:id
+      },
+      data:req.body,
+      include:{
+        quotes:true,
+      }
+    })
+res.status(200).json({data:"Author updated",updatedauthor})
   }
+  catch (error){
+    console.error(error);  
+
+  }
+
+
 };
 
-const deleteAuthorsById = (req, res) => {
-  const authors = JSON.parse(fs.readFileSync(filePath));
-  const filteredAuthors = authors.filter(a => a.id !== parseInt(req.params.id));//filter out those not deleted
-  //save
-  fs.writeFileSync(filePath, JSON.stringify(filteredAuthors));
-  res.status(204).send();
+const deleteAuthorsById = async(req, res) => {
+ try{
+const deletedauthor =await prisma.author.delete({
+  where:{
+    id:parseInt(req.params.id)
+  }
+})
+res.status(200).json({message:"Author deleted",deletedauthor})
+ }
+ catch(error){
+  console.log(error);
+  return res.status(500).json({error: "Internal Server Error"})
+ }
+  
 };
 
 
