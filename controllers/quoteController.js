@@ -34,7 +34,6 @@ catch(error){
 
 const createQuotes = async (req, res) => {
   
-
 try{
 
    const {text,category,author} = req.body;
@@ -90,12 +89,25 @@ const updateQuotesById = async (req, res) => {
 
 
 
-const deleteQuotesById = (req, res) => {
-  const quotes = JSON.parse(fs.readFileSync(filePath));
-  const filteredQuotes = quotes.filter(q => q.id !== parseInt(req.params.id));//filter out those not deleted
-  //save
-  fs.writeFileSync(filePath, JSON.stringify(filteredQuotes));
-  res.status(204).send("Deletion successful");
+const deleteQuotesById = async(req, res) => {
+ try{
+
+  const deletedQuote= await prisma.quote.delete({
+      where:{
+        id:parseInt(req.params.id)
+      }
+
+  }
+
+  )
+  res.status(200).json({message:"Quote deleted",deletedQuote})
+
+ }
+ catch(error){
+  console.log(error);
+  res.status(500).json({error: "Internal Server Error"})
+ }
+
 };
 
 
