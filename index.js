@@ -1,15 +1,19 @@
 const express = require("express");
 const morgan = require("morgan");
 const fs = require("node:fs");
+const cors =require("cors");
 const quotesRouter = require("./routes/quotesRouter"); //can be any variable name
 const authorsRouter = require("./routes/authorsRouter");
 const path = require('path');
 
 
+
 const app = express();
 const PORT = 4800;
 
+//middleware
 app.use(express.json());
+app.use(cors());
 
 // create a write stream (in append mode)
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'Logs', 'request_logs.txt'), { flags: 'a' })

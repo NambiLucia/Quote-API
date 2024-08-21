@@ -4,6 +4,7 @@ const { error } = require("node:console");
 const prisma = new PrismaClient();
 
 
+
 const getQuotes = async(req, res) => {
 let quotes=await prisma.quote.findMany()
 res.json(quotes)

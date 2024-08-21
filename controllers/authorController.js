@@ -2,6 +2,7 @@
 const { PrismaClient } = require("@prisma/client");
 const path = require("path");
 const prisma = new PrismaClient();
+const {StatusCodes} =require("http-status-codes")
 
 const getAuthors = async(req, res) => {
   try{
@@ -10,7 +11,7 @@ const getAuthors = async(req, res) => {
         quotes:true
       }
   })
-  res.json(authors)
+  res.StatusCodes.OK.json(authors)
      
   }
   catch(error){
