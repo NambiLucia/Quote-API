@@ -21,11 +21,14 @@ const getQuotesById = async (req, res) => {
     },
    
   })
-  res.status(200).json({getquotes})
+  return res.StatusCodes.OK.json({getquotes})
 
   }
 catch(error){
-  console.error(error)
+  return res
+    .StatusCodes.NOT_FOUND
+    .json({error:error.message});
+
 }    
 };
 
@@ -55,12 +58,12 @@ try{
  
       },
     });
-     return res.status(201).json({ data: newquote });
+    return res.StatusCodes.OK.json({message:"New Quote added",data: newquote });
   } catch (error) {
-    console.error(error); 
-   
+    return res
+    .StatusCodes.INTERNAL_SERVER_ERROR
+    .json({error:error.message});
   }
-
 };
 
 
@@ -76,15 +79,14 @@ const updateQuotesById = async (req, res) => {
   if(!updatedQuote) {
     return res.status(404).json({error:"Quote not found"})
   }
-  res.json(updatedQuote)
+  return res.StatusCodes.OK.json(updatedQuote)
   }
   catch(error){
-    console.error(error);  
-
+    return res
+    .StatusCodes.INTERNAL_SERVER_ERROR
+    .json({error:error.message});
   }
 };
-
-
 
 
 const deleteQuotesById = async(req, res) => {
@@ -94,20 +96,18 @@ const deleteQuotesById = async(req, res) => {
       where:{
         id:parseInt(req.params.id)
       }
-
   }
 
   )
-  res.status(200).json({message:"Quote deleted",deletedQuote})
-
+  return res.StatusCodes.OK.json({message:"Quote deleted",deletedQuote})
  }
  catch(error){
-  console.log(error);
-  return res.status(500).json({error: "Internal Server Error"})
+  return res
+  .StatusCodes.INTERNAL_SERVER_ERROR
+  .json({error:error.message});
  }
 
 };
-
 
 module.exports = {
   getQuotes,

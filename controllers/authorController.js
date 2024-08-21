@@ -11,11 +11,13 @@ const getAuthors = async(req, res) => {
         quotes:true
       }
   })
-  res.StatusCodes.OK.json(authors)
+  return res.StatusCodes.OK.json(authors)
      
   }
   catch(error){
-    console.error(error);
+    return res
+    .StatusCodes.NOT_FOUND
+    .json({error:error.message});
 
   }
  
@@ -34,11 +36,14 @@ const getAuthorsById = async (req, res) => {
     }
    
   })
-  res.status(200).json({getauthor})
+  return res.StatusCodes.OK.json({getauthor})
 
   }
 catch(error){
-  console.error(error)
+  return res
+    .StatusCodes.NOT_FOUND
+    .json({error:error.message});
+
 }
 };
 
@@ -66,13 +71,17 @@ const createAuthors = async(req, res) => {
 
     })
 
-    return res.status(201).json({ data: newauthor });
+    return res.StatusCodes.OK.json({ message:"New Author added",data: newauthor });
 
   }
   catch(error){
-    console.error(error)
+    return res
+    .StatusCodes.INTERNAL_SERVER_ERROR
+    .json({error:error.message});
   }
 };
+
+
 
 const updateAuthorsById = async(req, res) => {
   try{
@@ -86,15 +95,16 @@ const updateAuthorsById = async(req, res) => {
         quotes:true,
       }
     })
-res.status(200).json({data:"Author updated",updatedauthor})
+    return res.StatusCodes.OK.json({data:"Author updated",updatedauthor})
   }
   catch (error){
-    console.error(error);  
+    return res
+    .StatusCodes.INTERNAL_SERVER_ERROR
+    .json({error:error.message});
 
   }
-
-
 };
+
 
 const deleteAuthorsById = async(req, res) => {
  try{
@@ -103,17 +113,15 @@ const deletedauthor =await prisma.author.delete({
     id:parseInt(req.params.id)
   }
 })
-res.status(200).json({message:"Author deleted",deletedauthor})
+return res.StatusCodes.OK.json({message:"Author deleted",deletedauthor})
  }
  catch(error){
-  console.log(error);
-  return res.status(500).json({error: "Internal Server Error"})
+  return res
+    .StatusCodes.INTERNAL_SERVER_ERROR
+    .json({error:error.message});
  }
   
 };
-
-
-
 
 module.exports = {
   createAuthors,
