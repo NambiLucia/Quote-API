@@ -419,3 +419,6 @@
 ::1 - - [20/Aug/2024:09:00:07 +0000] "GET /authors/ HTTP/1.1" 200 1197 "-" "PostmanRuntime/7.41.1"
 ::1 - - [20/Aug/2024:09:00:20 +0000] "GET /authors/9 HTTP/1.1" 200 257 "-" "PostmanRuntime/7.41.1"
 ::1 - - [20/Aug/2024:09:03:49 +0000] "GET /authors/ HTTP/1.1" 200 1867 "-" "PostmanRuntime/7.41.1"
+::1 - - [20/Aug/2024:09:35:27 +0000] "GET / HTTP/1.1" 200 27 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0"
+::1 - - [20/Aug/2024:09:35:27 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:4800/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0"
+::1 - - [20/Aug/2024:09:35:33 +0000] "GET /quotes HTTP/1.1" 200 604 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0"

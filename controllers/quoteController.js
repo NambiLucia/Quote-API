@@ -1,8 +1,6 @@
-const fs = require("node:fs");
 const { PrismaClient } = require("@prisma/client");
 const path = require("path");
 const { error } = require("node:console");
-const filePath = path.join(__dirname, "../models/quotes.json");
 const prisma = new PrismaClient();
 
 

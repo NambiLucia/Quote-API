@@ -1,8 +1,6 @@
-const fs = require("node:fs");
+
 const { PrismaClient } = require("@prisma/client");
 const path = require("path");
-const { text } = require("express");
-const filePath = path.join(__dirname,"../models/authors.json");
 const prisma = new PrismaClient();
 
 const getAuthors = async(req, res) => {
