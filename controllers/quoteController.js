@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const path = require("path");
 const { error } = require("node:console");
 const prisma = new PrismaClient();
-
+const {StatusCodes} =require("http-status-codes")
 
 
 const getQuotes = async(req, res) => {
@@ -21,12 +21,12 @@ const getQuotesById = async (req, res) => {
     },
    
   })
-  return res.StatusCodes.OK.json({getquotes})
+  return res.status(StatusCodes.OK).json({getquotes})
 
   }
 catch(error){
   return res
-    .StatusCodes.NOT_FOUND
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .json({error:error.message});
 
 }    
@@ -58,10 +58,10 @@ try{
  
       },
     });
-    return res.StatusCodes.OK.json({message:"New Quote added",data: newquote });
+    return res.status(StatusCodes.OK).json({message:"New Quote added",data: newquote });
   } catch (error) {
     return res
-    .StatusCodes.INTERNAL_SERVER_ERROR
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .json({error:error.message});
   }
 };
@@ -79,11 +79,11 @@ const updateQuotesById = async (req, res) => {
   if(!updatedQuote) {
     return res.status(404).json({error:"Quote not found"})
   }
-  return res.StatusCodes.OK.json(updatedQuote)
+  return res.status(StatusCodes.OK).json(updatedQuote)
   }
   catch(error){
     return res
-    .StatusCodes.INTERNAL_SERVER_ERROR
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .json({error:error.message});
   }
 };
@@ -99,11 +99,11 @@ const deleteQuotesById = async(req, res) => {
   }
 
   )
-  return res.StatusCodes.OK.json({message:"Quote deleted",deletedQuote})
+  return res.status(StatusCodes.OK).json({message:"Quote deleted",deletedQuote})
  }
  catch(error){
   return res
-  .StatusCodes.INTERNAL_SERVER_ERROR
+  .status(StatusCodes.INTERNAL_SERVER_ERROR)
   .json({error:error.message});
  }
 

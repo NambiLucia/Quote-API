@@ -13,6 +13,7 @@ const PORT = 4800;
 
 //middleware
 app.use(express.json());
+
 app.use(cors());
 
 // create a write stream (in append mode)

@@ -11,12 +11,12 @@ const getAuthors = async(req, res) => {
         quotes:true
       }
   })
-  return res.StatusCodes.OK.json(authors)
+  return res.status(StatusCodes.OK).json(authors)
      
   }
   catch(error){
     return res
-    .StatusCodes.NOT_FOUND
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .json({error:error.message});
 
   }
@@ -36,12 +36,12 @@ const getAuthorsById = async (req, res) => {
     }
    
   })
-  return res.StatusCodes.OK.json({getauthor})
+  return res.status(StatusCodes.OK).json({getauthor})
 
   }
 catch(error){
   return res
-    .StatusCodes.NOT_FOUND
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .json({error:error.message});
 
 }
@@ -71,12 +71,12 @@ const createAuthors = async(req, res) => {
 
     })
 
-    return res.StatusCodes.OK.json({ message:"New Author added",data: newauthor });
+    return res.status(StatusCodes.OK).json({ message:"New Author added",data: newauthor });
 
   }
   catch(error){
     return res
-    .StatusCodes.INTERNAL_SERVER_ERROR
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .json({error:error.message});
   }
 };
@@ -95,16 +95,15 @@ const updateAuthorsById = async(req, res) => {
         quotes:true,
       }
     })
-    return res.StatusCodes.OK.json({data:"Author updated",updatedauthor})
+    return res.status(StatusCodes.OK).json({data:"Author updated",updatedauthor})
   }
   catch (error){
     return res
-    .StatusCodes.INTERNAL_SERVER_ERROR
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .json({error:error.message});
 
   }
 };
-
 
 const deleteAuthorsById = async(req, res) => {
  try{
@@ -113,15 +112,16 @@ const deletedauthor =await prisma.author.delete({
     id:parseInt(req.params.id)
   }
 })
-return res.StatusCodes.OK.json({message:"Author deleted",deletedauthor})
+return res.status(StatusCodes.OK).json({message:"Author deleted",deletedauthor})
  }
  catch(error){
   return res
-    .StatusCodes.INTERNAL_SERVER_ERROR
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .json({error:error.message});
  }
   
 };
+
 
 module.exports = {
   createAuthors,
