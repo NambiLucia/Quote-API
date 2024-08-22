@@ -36,13 +36,17 @@ const getAuthorsById = async (req, res) => {
     }
    
   })
-  return res.status(StatusCodes.OK).json({getauthor})
+ 
+ 
+    return res.status(StatusCodes.OK).json({ message: `Author id ${id}`,getauthor})
+ 
+
 
   }
 catch(error){
   return res
     .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .json({error:error.message});
+    .json({error});
 
 }
 };
