@@ -7,6 +7,24 @@ author:Joi.string().min(3).max(20).required()
 
 })
 
+
+const authorSchema=Joi.object({
+name:Joi.string().min(3).max(250).required(),
+picture:Joi.string().min(3).max(250).required()
+
+})
+
+
+
+console.log(quoteSchema);
+console.log(authorSchema);
+
+
+
+
+
+
 module.exports ={
-    quoteSchema
+    quoteSchema,
+    authorSchema
 }

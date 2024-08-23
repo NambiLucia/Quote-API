@@ -3,7 +3,8 @@ const express = require("express");
 const quotesRouter = express.Router();
 const quoteController = require("../controllers/quoteController");
 const {quoteSchema} =require('../utils/joi-schemas')
-const {validateQuote} = require('../utils/joi-quote-validator')
+const {validateQuote} = require('../utils/joi-quote-validator');
+
 
 //quote requests
 quotesRouter.get("/",quoteController.getQuotes);
