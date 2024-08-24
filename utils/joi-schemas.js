@@ -1,4 +1,5 @@
 const Joi=require('joi');
+
 const quoteSchema=Joi.object({
 
 text:Joi.string().min(3).max(250).required(),
@@ -18,8 +19,6 @@ picture:Joi.string().min(3).max(250).required()
 
 console.log(quoteSchema);
 console.log(authorSchema);
-
-
 
 
 

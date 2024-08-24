@@ -15,6 +15,6 @@ console.log(validateQuote)
 
 
 module.exports={
-    validateQuote
+ validateQuote
    
 }

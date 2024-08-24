@@ -71,7 +71,7 @@ const createAuthors = async(req, res) => {
           }
         }
 
-      }    
+      } 
 
     })
 

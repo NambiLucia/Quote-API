@@ -92,7 +92,7 @@ const deleteQuotesById = async (req, res) => {
   try {
     const deletedQuote = await prisma.quote.delete({
       where: {
-        id: parseInt(req.params.id),
+        id: parseInt(req.params.id),//+(req.params.id)
       },
     });
 
