@@ -4,6 +4,7 @@ const fs = require("node:fs");
 const cors =require("cors");
 const quotesRouter = require("./routes/quotesRouter"); //can be any variable name
 const authorsRouter = require("./routes/authorsRouter");
+const usersRouter =require("./routes/usersRouter")
 const path = require('path');
 
 
@@ -25,6 +26,7 @@ app.use(morgan('combined', { stream: accessLogStream }))
 //middelware to direct endpoint requests to quotesRouter
 app.use("/quotes", quotesRouter);
 app.use("/authors", authorsRouter);
+app.use("/users",usersRouter);
 
 app.get("/", (req, res) => {
   res.send("<h1>My First Quote API</h1>");
