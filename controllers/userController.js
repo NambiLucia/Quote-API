@@ -3,6 +3,10 @@ const prisma = new PrismaClient();
 const { StatusCodes } = require("http-status-codes");
 const jwt = require('jsonwebtoken');
 require('dotenv/config');
+const bcrpyt = require('bcrypt');
+
+
+
 
 const getUsers = async (req, res) => {
   try {
@@ -18,7 +22,8 @@ const getUsers = async (req, res) => {
 const loginUsers = async (req, res) => {
     try {
         const {username,password}=req.body;
-
+//hashed password
+      //const hashedPassword =await bcrpyt.hash(password,10)
 
       let user = await prisma.user.findUnique({
         where:{
@@ -26,6 +31,9 @@ const loginUsers = async (req, res) => {
         }
       });
         if(user){
+
+          //compare password typed with  hashed password in the DB 
+       
             if(user.password === password){
                 //create token(jwt)
              const token = await jwt.sign(
