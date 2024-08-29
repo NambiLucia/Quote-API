@@ -19,11 +19,36 @@ const getUsers = async (req, res) => {
   }
 };
 
+//user signup
+const signUp =async(req,res)=>{
+  try{
+    const {username,password,email,role} =req.body;
+    const hashedPassword =await bcrpyt.hash(password,10)
+
+   const newUser = await prisma.user.create({
+      username:username,
+      password:hashedPassword,
+      email:email,
+      role:role
+  
+    });
+    return res.status(StatusCodes.OK).json({"message":"User created successfully", newUser})
+  }
+
+  catch(error){
+console.log(error)
+return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({"message":"Error occured while creating user"})
+
+  }
+}
+
+
+
+
 const loginUsers = async (req, res) => {
     try {
         const {username,password}=req.body;
-//hashed password
-      //const hashedPassword =await bcrpyt.hash(password,10)
+
 
       let user = await prisma.user.findUnique({
         where:{
@@ -31,8 +56,6 @@ const loginUsers = async (req, res) => {
         }
       });
         if(user){
-
-          //compare password typed with  hashed password in the DB 
        
             if(user.password === password){
                 //create token(jwt)
@@ -75,6 +98,7 @@ const loginUsers = async (req, res) => {
 
 module.exports = {
     getUsers,
-    loginUsers
+    loginUsers,
+    signUp
     
   };
