@@ -26,10 +26,15 @@ const signUp =async(req,res)=>{
     const hashedPassword =await bcrpyt.hash(password,10)
 
    const newUser = await prisma.user.create({
-      username:username,
+    data:{
+      username,
       password:hashedPassword,
-      email:email,
-      role:role
+      email,
+      role
+
+    }
+    
+ 
   
     });
     return res.status(StatusCodes.OK).json({"message":"User created successfully", newUser})
@@ -49,15 +54,16 @@ const loginUsers = async (req, res) => {
     try {
         const {username,password}=req.body;
 
-
       let user = await prisma.user.findUnique({
         where:{
             username
         }
       });
         if(user){
+          //compare entered password with hashed password
+          const matchPassword = await bcrpyt.compare(password,user.password)
        
-            if(user.password === password){
+            if(matchPassword){
                 //create token(jwt)
              const token = await jwt.sign(
                     {id:user.id,role:user.role},
@@ -73,9 +79,9 @@ const loginUsers = async (req, res) => {
             else{
                 res.status(StatusCodes.UNAUTHORIZED).json({"error":"Wrong password"});
             }
-             res.status(StatusCodes.NOT_FOUND).json({user});
+             //res.status(StatusCodes.NOT_FOUND).json({user});
         }else{
-            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({"error":"User not found"});
+            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({"error":"User not found",user});
         }
 
 
@@ -88,6 +94,44 @@ const loginUsers = async (req, res) => {
     }
   };
 
+  /*const updateUserById = async (req, res) => {
+    try {
+      const { password, ...otherData } = req.body;
+  
+      // First, update the user without hashing the password
+      let updatedUser = await prisma.user.update({
+        where: {
+          id: req.params.id,
+        },
+        data: otherData, // Update with other data, excluding the password
+      });
+  
+      if (!updatedUser) {
+        return res.status(404).json({ error: "User not found" });
+      }
+  
+      // If a password is provided, hash it and update the user again
+      if (password) {
+        const hashedPassword = await bcrypt.hash(password, 10);
+  
+        updatedUser = await prisma.user.update({
+          where: {
+            id: req.params.id,
+          },
+          data: {
+            password: hashedPassword,
+          },
+        });
+      }
+  
+      return res.status(200).json(updatedUser);
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ error: error.message });
+    }
+  };*/
+
 
 
 
@@ -99,6 +143,7 @@ const loginUsers = async (req, res) => {
 module.exports = {
     getUsers,
     loginUsers,
-    signUp
+    signUp,
+    //updateUserById
     
   };
