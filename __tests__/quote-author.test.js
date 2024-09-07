@@ -3,12 +3,14 @@ const prisma = new PrismaClient();
 const {describe,test,expect} =require('@jest/globals')
 
 
-function quoteTest() {
-  describe("get all quotes", () => {
-    test("should display all quotes", async () => {
+function quoteAuthorTest() {
+  describe("get all quotes and authors", () => {
+    test("should display all quotes and authors", async () => {
       try {
         let quotes = await prisma.quote.findMany();
+        let authors=await prisma.author.findMany();
         expect(quotes).toBeDefined()
+        expect(authors).toBeDefined()
 
       } catch (error) {
         console.log(error)
@@ -19,6 +21,6 @@ function quoteTest() {
   });
 }
 
-quoteTest();
+quoteAuthorTest();
 
 //module.exports = quoteTest;
