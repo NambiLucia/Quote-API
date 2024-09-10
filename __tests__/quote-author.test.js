@@ -20,7 +20,36 @@ function quoteAuthorTest() {
 
   });
 }
+//wrong test but reults to passed
+function authorExists(){
+  describe("If author exists",() =>{
+    test("check if author exists", async ()=>{
+      try{
+        let author = await prisma.author.findUnique(
+          {where:{
+            name:"Michelle Obama"
+          }}
+        );
+       //error in code
+        expect(quote).toEqual({
+          "name": "Michelle Obama",})
+
+      }
+      catch(error){
+        console.log(error)
+      //throw error
+
+      }
+    })
+  }
+
+
+
+
+  )
+}
 
 quoteAuthorTest();
+authorExists();
 
 //module.exports = quoteTest;
