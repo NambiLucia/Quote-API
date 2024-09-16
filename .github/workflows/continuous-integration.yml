@@ -1,0 +1,19 @@
+name: Continuous Integration
+on: push:
+      branches:[develop2]
+
+
+jobs:
+  testing_api:
+    runs-on:ubuntu-latest
+
+  steps:
+  - name:clone repo code into the runner
+  - uses:actions/checkout@v2
+  - uses:actions/setup-node@v1
+    with:
+      node-version:20
+  - name:install dependencies
+      run:npm install CI
+  - name:Run the unit/intergartion test
+    run:npm test
