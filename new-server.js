@@ -24,7 +24,7 @@ app.use(morgan('combined', { stream: accessLogStream }))
 
 
 //middelware to direct endpoint requests to quotesRouter
-app.use("/api/v1/quotes", quotesRouter);
+app.use("/quotes", quotesRouter);
 app.use("/authors", authorsRouter);
 app.use("/users",usersRouter);
 

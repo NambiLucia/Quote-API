@@ -1,5 +1,4 @@
-const {app} =require('./new-server')
-
+const app =require('./new-server')
 
 const PORT = 4800;
 

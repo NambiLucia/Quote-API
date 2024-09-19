@@ -1,0 +1,1392 @@
+{
+	"info": {
+		"_postman_id": "c170bd8f-d4ea-45fc-bbad-cfde292f6eb1",
+		"name": "QUOTE-API COLLECTION",
+		"description": "The quote API provides access to a collection of quotes.\n\n**API VERSION: V1.0.0**\n\n**How to get started**\n\n- **Initialize Node.js project:**  \n    Run `npm init -y` to create a `package.json` file.**Install dependencies:**  \n    Install the necessary packages.\n    \n- **Install dependencies:**  \n    Install the necessary packages\n    \n- **Set up Prisma schema**\n    \n- **Create Controllers**\n    \n\n1. **quoteController.js:**  \n    Handle CRUD operations for quotes.\n    \n2. **authorController.js:**  \n    Handle CRUD operations for authors.\n    \n3. **userController.js:**  \n    Handle CRUD operations for users.\n    \n\n- **Set Up Routes**\n    \n\n1. **quoteRoutes.js:**  \n    Define routes related to quotes (e.g., GET, POST, DELETE).\n    \n2. **authorRoutes.js:**  \n    Define routes related to authors.\n    \n3. **userRoutes.js:**  \n    Define routes related to users.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34949339"
+	},
+	"item": [
+		{
+			"name": "Quote",
+			"item": [
+				{
+					"name": "Base URL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4800",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800"
+						}
+					},
+					"response": [
+						{
+							"name": "Get Home",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800"
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b-EwsGWC8D7yVSEq2vPH+TWWvd0mA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 09:52:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "<h1>My First Quote API</h1>"
+						}
+					]
+				},
+				{
+					"name": "GET Quote",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4800/quotes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800",
+							"path": [
+								"quotes",
+								""
+							]
+						},
+						"description": "Gives access to all quotes"
+					},
+					"response": [
+						{
+							"name": "GET Quote",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/quotes/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"quotes",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "742"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e6-3D982LS3SXUCLck6as0ACgopMQc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 09:55:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"text\": \"Great things in business are never done by one person. They're done by a team of people.\",\n        \"category\": \"Inspirational\",\n        \"authorId\": 1\n    },\n    {\n        \"id\": 2,\n        \"text\": \"When they go low,we go high\",\n        \"category\": \"Inspirational\",\n        \"authorId\": 2\n    },\n    {\n        \"id\": 5,\n        \"text\": \"Find something you're passionate about and keep tremendously interested in it.\",\n        \"category\": \"Success\",\n        \"authorId\": 7\n    },\n    {\n        \"id\": 3,\n        \"text\": \"My mother always used to say, 'The older you get, the better you get. Unless you're a banana...'\",\n        \"category\": \"Comedy\",\n        \"authorId\": 3\n    },\n    {\n        \"id\": 7,\n        \"text\": \"Remember, you can always stoop and pick up nothing\",\n        \"category\": \"Comedy\",\n        \"authorId\": 10\n    },\n    {\n        \"id\": 8,\n        \"text\": \"Success is liking yourself, liking what you do, and liking how you do it\",\n        \"category\": \"Success\",\n        \"authorId\": 11\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "CREATE Quote",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Programming isn’t about what you know; it’s about what you can figure out.\",\r\n  \"category\": \"Programming\",\r\n  \"author\": \"Chris Pine\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4800/quotes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800",
+							"path": [
+								"quotes",
+								""
+							]
+						},
+						"description": "Gives access to create a new quote"
+					},
+					"response": [
+						{
+							"name": "CREATE Quote",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"text\": \"Programming isn’t about what you know; it’s about what you can figure out.\",\r\n  \"category\": \"Programming\",\r\n  \"author\": \"Chris Pine\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/quotes/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"quotes",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "172"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ac-mAQ7BxM+aBbq9z9FjNYm2HnLFAE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 10:01:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"New Quote added\",\n    \"data\": {\n        \"id\": 9,\n        \"text\": \"Programming isn’t about what you know; it’s about what you can figure out.\",\n        \"category\": \"Programming\",\n        \"authorId\": 12\n    }\n}"
+						},
+						{
+							"name": "CREATE-with no category",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"text\": \"Programming isn’t about what you know; it’s about what you can figure out.\",\r\n  \"category\": \"\",\r\n  \"author\": \"Chris Pine\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/quotes/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"quotes",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-P+0Dh50DEy2yy3RX4VOLOsbJRbI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 07:07:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"\\\"category\\\" is not allowed to be empty\"\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT Quote",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Remember, you can always stoop and pick up nothing!\",\r\n  \"category\": \"Comedy\"\r\n  \r\n \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4800/quotes/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800",
+							"path": [
+								"quotes",
+								"7"
+							]
+						},
+						"description": "Gives access to update a quote by ID"
+					},
+					"response": [
+						{
+							"name": "PUT Quote",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"text\": \"Remember, you can always stoop and pick up nothing!\",\r\n  \"category\": \"Comedy\"\r\n  \r\n \r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/quotes/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"quotes",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "103"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"67-65HczwoKPp01ZV9ZCORQTPUzOj0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 10:41:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 7,\n    \"text\": \"Remember, you can always stoop and pick up nothing!\",\n    \"category\": \"Comedy\",\n    \"authorId\": 10\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE Quote",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4800/quotes/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800",
+							"path": [
+								"quotes",
+								"9"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Gives access to delete a quote by ID"
+					},
+					"response": [
+						{
+							"name": "DELETE Quote",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/quotes/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"quotes",
+										"9"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "178"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b2-whJjs5lCsTMzZg3mId7L3sdCXhw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 10:48:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Quote deleted\",\n    \"deletedQuote\": {\n        \"id\": 9,\n        \"text\": \"Programming isn’t about what you know; it’s about what you can figure out.\",\n        \"category\": \"Programming\",\n        \"authorId\": 12\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Quote requests allow the user to create ,read, update and delete quotes"
+		},
+		{
+			"name": "Author",
+			"item": [
+				{
+					"name": "GET Author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4800/authors/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800",
+							"path": [
+								"authors",
+								""
+							]
+						},
+						"description": "Gives access to all authors"
+					},
+					"response": [
+						{
+							"name": "GET Author",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4800/authors/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"authors",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2270"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8de-XlhHSDiBjLVA1XXeEssim6KcY4s\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 10:50:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Mathew perry\",\n        \"picture\": \"https://www.bing.com/ck/a?!&&p=d11f31e5c52ec912JmltdHM9MTcyMzc2NjQwMCZpZ3VpZD0yZTM0ZmU4Zi0wY2E5LTZhMzItMjA3OS1lYTNjMGRmZjZiODgmaW5zaWQ9NTc0MQ&ptn=3&ver=2&hsh=3&fclid=2e34fe8f-0ca9-6a32-2079-ea3c0dff6b88&u=a1L2ltYWdlcy9zZWFyY2g_cT1zdGV2ZSUyMGpvYnMlMjBpbWFnZSZGT1JNPUlRRlJCQSZpZD0xNDZEOURCNEYwRDJGOTJERjlBMjhDMUIyRDI1RjZBN0M4NUI5NTMz&ntb=1\",\n        \"quotes\": [\n            {\n                \"id\": 1,\n                \"text\": \"Great things in business are never done by one person. They're done by a team of people.\",\n                \"category\": \"Inspirational\",\n                \"authorId\": 1\n            }\n        ]\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Michelle Obama\",\n        \"picture\": \"https://www.bing.com/ck/a?!&&p=0f12311d978183aaJmltdHM9MTcyMzc2NjQwMCZpZ3VpZD0yZTM0ZmU4Zi0wY2E5LTZhMzItMjA3OS1lYTNjMGRmZjZiODgmaW5zaWQ9NjA1OQ&ptn=3&ver=2&hsh=3&fclid=2e34fe8f-0ca9-6a32-2079-ea3c0dff6b88&u=a1L2ltYWdlcy9zZWFyY2g_cT1taWNoZWxsZStvYmFtYSZpZD1CQ0I5ODBCMzU0NzNEREQxNDBBNEMyNEZCNTQxMzA2QTExRTIxOENBJkZPUk09SVFGUkJB&ntb=1\",\n        \"quotes\": [\n            {\n                \"id\": 2,\n                \"text\": \"When they go low,we go high\",\n                \"category\": \"Inspirational\",\n                \"authorId\": 2\n            }\n        ]\n    },\n    {\n        \"id\": 8,\n        \"name\": \"Trevor Noah\",\n        \"picture\": \"https://th.bing.com/th/id/R.e5d37f458bf061571d8890c11e09ab7e?rik=Hwt3MKGtfqkE4Q&pid=ImgRaw&r=0\",\n        \"quotes\": []\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Betty Whitte\",\n        \"picture\": \"https://th.bing.com/th/id/OIP.AwQvFJkZObt19iXUCE_RpwHaJQ?rs=1&pid=ImgDetMain\",\n        \"quotes\": [\n            {\n                \"id\": 3,\n                \"text\": \"My mother always used to say, 'The older you get, the better you get. Unless you're a banana...'\",\n                \"category\": \"Comedy\",\n                \"authorId\": 3\n            }\n        ]\n    },\n    {\n        \"id\": 10,\n        \"name\": \"Charlie chaplin\",\n        \"picture\": \"https://th.bing.com/th/id/OIP.LNhRbCa7grihRKN1deZ4egHaHa?w=190&h=190&c=7&r=0&o=5&dpr=2.5&pid=1.7\",\n        \"quotes\": [\n            {\n                \"id\": 7,\n                \"text\": \"Remember, you can always stoop and pick up nothing!\",\n                \"category\": \"Comedy\",\n                \"authorId\": 10\n            }\n        ]\n    },\n    {\n        \"id\": 11,\n        \"name\": \"Maya Angelou\",\n        \"picture\": null,\n        \"quotes\": [\n            {\n                \"id\": 8,\n                \"text\": \"Success is liking yourself, liking what you do, and liking how you do it\",\n                \"category\": \"Success\",\n                \"authorId\": 11\n            }\n        ]\n    },\n    {\n        \"id\": 7,\n        \"name\": \"Chef Julia Child\",\n        \"picture\": \"https://tomandlorenzo.com/wp-content/uploads/2022/03/JULIA-HBO-Sarah-Lancashire-Max-TV-Series-Poster-Official-Trailer-Tom-Lorenzo-Site-2.jpg\",\n        \"quotes\": [\n            {\n                \"id\": 5,\n                \"text\": \"Find something you're passionate about and keep tremendously interested in it.\",\n                \"category\": \"Success\",\n                \"authorId\": 7\n            }\n        ]\n    },\n    {\n        \"id\": 12,\n        \"name\": \"Chris Pine\",\n        \"picture\": null,\n        \"quotes\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "CREATE Author",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n        \"name\": \"Kevin Hart\",\r\n        \"picture\": \"https://th.bing.com/th/id/OIP.kinvSB-28th8Mlp1rX2yFAHaK6?rs=1&pid=ImgDetMain\",\r\n        \"quotes\": \r\n            {\r\n                \"text\": \"Before I look stupid and not know what a word means or how to pronounce it, I’ll stop the whole production: ‘Hey, real quick, guys. Define this word for me. Somebody.\",\r\n                \"category\": \"Comedy\"\r\n                \r\n\r\n            }\r\n        \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4800/authors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800",
+							"path": [
+								"authors"
+							]
+						},
+						"description": "Gives access to create an author"
+					},
+					"response": [
+						{
+							"name": "CREATE Author",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \r\n        \"name\": \"Kevin Hart\",\r\n        \"picture\": \"https://th.bing.com/th/id/OIP.kinvSB-28th8Mlp1rX2yFAHaK6?rs=1&pid=ImgDetMain\",\r\n        \"quotes\": \r\n            {\r\n                \"text\": \"Before I look stupid and not know what a word means or how to pronounce it, I’ll stop the whole production: ‘Hey, real quick, guys. Define this word for me. Somebody.\",\r\n                \"category\": \"Comedy\"\r\n                \r\n\r\n            }\r\n        \r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/authors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"authors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9c-GP1JLpG3EMmXD/5L95YUM2wavPo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 10:56:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"New Author added\",\n    \"data\": {\n        \"id\": 13,\n        \"name\": \"Kevin Hart\",\n        \"picture\": \"https://th.bing.com/th/id/OIP.kinvSB-28th8Mlp1rX2yFAHaK6?rs=1&pid=ImgDetMain\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT Author",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n       \r\n        \"name\": \"Kevin Hart M.\",\r\n        \"picture\":\"https://th.bing.com/th/id/OIP.kinvSB-28th8Mlp1rX2yFAHaK6?rs=1&pid=ImgDetMain\"\r\n        \r\n        }\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4800/authors/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800",
+							"path": [
+								"authors",
+								"13"
+							]
+						},
+						"description": "Gives access to update an Author by ID"
+					},
+					"response": [
+						{
+							"name": "PUT Author",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n       \r\n        \"name\": \"Kevin Hart M.\",\r\n        \"picture\":\"https://th.bing.com/th/id/OIP.kinvSB-28th8Mlp1rX2yFAHaK6?rs=1&pid=ImgDetMain\"\r\n        \r\n        }\r\n    ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/authors/13",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"authors",
+										"13"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "398"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18e-JRC4JYqaEiH9RxdaElrIJ24LW3k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 10:58:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"Author updated\",\n    \"updatedauthor\": {\n        \"id\": 13,\n        \"name\": \"Kevin Hart M.\",\n        \"picture\": \"https://th.bing.com/th/id/OIP.kinvSB-28th8Mlp1rX2yFAHaK6?rs=1&pid=ImgDetMain\",\n        \"quotes\": [\n            {\n                \"id\": 10,\n                \"text\": \"Before I look stupid and not know what a word means or how to pronounce it, I’ll stop the whole production: ‘Hey, real quick, guys. Define this word for me. Somebody.\",\n                \"category\": \"Comedy\",\n                \"authorId\": 13\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "PUT with no name",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n       \r\n        \"name\": \"\",\r\n        \"picture\":\"https://th.bing.com/th/id/OIP.kinvSB-28th8Mlp1rX2yFAHaK6?rs=1&pid=ImgDetMain\"\r\n        \r\n        }\r\n    ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/authors/13",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"authors",
+										"13"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-nASFNVf2tP0xIAFoi/HVpticzIk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 07:08:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"\\\"name\\\" is not allowed to be empty\"\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE Author",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4800/authors/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800",
+							"path": [
+								"authors",
+								"12"
+							]
+						},
+						"description": "Gives access to delete an author by ID"
+					},
+					"response": [
+						{
+							"name": "DELETE Author",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4800/authors/12",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"authors",
+										"12"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-yQwWQFP8MvexWXMcxmfpR0L/bp8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 11:01:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Author deleted\",\n    \"deletedauthor\": {\n        \"id\": 12,\n        \"name\": \"Chris Pine\",\n        \"picture\": null\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Author requests allow the user to create ,read, update and delete authors"
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjlhYTM2LTUwZmYtNDFiZS1iM2I0LTJmYzNiMjU2NzZiMSIsInJvbGUiOiJzdWJzY3JpYmVyIiwiaWF0IjoxNzI1MTg5NTQxLCJleHAiOjE3MjUxOTMxNDF9.yqkKwDFIkwcLoqwCqfxLZzPIcVkgcQcDBqegcuj1nYg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4800/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800",
+							"path": [
+								"users",
+								""
+							]
+						},
+						"description": "Gives access to all users with a token"
+					},
+					"response": [
+						{
+							"name": "Get Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"users",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "747"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2eb-EZk6o7181/SU9qXgeNt5vvVj8WQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 11:19:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"4e47bfad-08f0-49ef-8db1-529b59d54a6f\",\n        \"username\": \"Nana Kagga\",\n        \"password\": \"$2b$10$mxPDqXgbemVlw6fpHQDr9emJSNqfVmFmbEWFOOspZU94/e8RUCYa2\",\n        \"email\": \"nana@email.com\",\n        \"role\": \"subscriber\"\n    },\n    {\n        \"id\": \"69f8cd7d-42bf-4672-8f6e-b9307d214672\",\n        \"username\": \"Nadia Rungi\",\n        \"password\": \"$2b$10$YCJ/VL47xl6nH2FMjthPAOKKz4wpTk.YZq4cYwO/XpfrNiuFeAX5i\",\n        \"email\": \"nadia@email.com\",\n        \"role\": \"subscriber\"\n    },\n    {\n        \"id\": \"55b9aa36-50ff-41be-b3b4-2fc3b25676b1\",\n        \"username\": \"mike m\",\n        \"password\": \"$2b$10$ZEjR5bvXvoRYmxaMObmXxeQ2bbuUqlh71Xpc7ciawRl91cWG3eFN.\",\n        \"email\": \"mike@email.com\",\n        \"role\": \"subscriber\"\n    },\n    {\n        \"id\": \"bc0504c5-7dff-4fbb-8570-b15ca3fe53d9\",\n        \"username\": \"Sonia\",\n        \"password\": \"$2b$10$ZZr6n6z7rfkoa9AIXCduBumHjw/c0C0GhI3BLXJ6HPKdFBxrqEi0W\",\n        \"email\": \"sonia@email.com\",\n        \"role\": \"editor\"\n    }\n]"
+						},
+						{
+							"name": "User with no token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"users",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "24"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18-R4Suc/Xh20HWJFrN753InO5LJ6Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 07:09:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "\"Auth header is missing\""
+						}
+					]
+				},
+				{
+					"name": "Login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"mike m\",\r\n    \"password\":\"mike256\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4800/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800",
+							"path": [
+								"users",
+								"login"
+							]
+						},
+						"description": "Gives access to login a user"
+					},
+					"response": [
+						{
+							"name": "Login user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"mike m\",\r\n    \"password\":\"mike256\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "254"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fe-Tl3Bndh8N/OSvs0k6lxUpAVQaeY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 11:19:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjlhYTM2LTUwZmYtNDFiZS1iM2I0LTJmYzNiMjU2NzZiMSIsInJvbGUiOiJzdWJzY3JpYmVyIiwiaWF0IjoxNzI1MTg5NTQxLCJleHAiOjE3MjUxOTMxNDF9.yqkKwDFIkwcLoqwCqfxLZzPIcVkgcQcDBqegcuj1nYg\",\n    \"message\": \"Successful login\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Signup user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Miria Matembe\",\r\n    \"password\":\"Miria123\",\r\n    \"email\":\"miria@email.com\",\r\n    \"role\":\"editor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4800/users/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4800",
+							"path": [
+								"users",
+								"signup"
+							]
+						},
+						"description": "Gives access to signup as a user"
+					},
+					"response": [
+						{
+							"name": "Signup user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"Miria Matembe\",\r\n    \"password\":\"Miria123\",\r\n    \"email\":\"miria@email.com\",\r\n    \"role\":\"editor\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4800/users/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4800",
+									"path": [
+										"users",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "238"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ee-OjeSf1AmJQ2irMtjoSO9BTxRw0k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 Sep 2024 11:23:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User created successfully\",\n    \"newUser\": {\n        \"id\": \"4cc03022-d606-430e-b88c-8ead2b4691a3\",\n        \"username\": \"Miria Matembe\",\n        \"password\": \"$2b$10$sIGHeubljVM.qTfcQPdLa.MUOaM6t0lwVYJ5xkjUdS4JjGBxrQeDK\",\n        \"email\": \"miria@email.com\",\n        \"role\": \"editor\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "User requests allow the user to get all users,signup and login"
+		}
+	]
+}

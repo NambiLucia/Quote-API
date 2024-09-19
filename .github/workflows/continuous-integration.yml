@@ -4,7 +4,8 @@ on:
       branches:[develop2]
   push:
        branches:[develop2]
-
+env:
+    DATABASE_URL="postgresql://postgres:admin123@localhost:5432/mydb?schema=public"
 
 jobs:
   testing_api: #name of job

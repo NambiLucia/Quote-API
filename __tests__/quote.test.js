@@ -22,13 +22,13 @@ describe("test case Quote CRUD functions", () => {
   });
 
   test("get all quotes",async () =>{
-    await request(app).get("/api/v1/quotes").expect(200)
+    await request(app).get("/quotes").expect(200)
   })
   test("should not accept quote without category",async () =>{
     await request(app)
     .post("/quotes")
     .send({
-        text:quote.text,
+        text:quote.text
     })
     .expect(404)
   })
@@ -43,7 +43,7 @@ describe("test case Quote CRUD functions", () => {
     .expect(404)
   })
 
-  test("shoud not delete witout ID",async ()=>{
+  test("shoud not delete without ID",async ()=>{
     await request(app)
     .delete("/quotes/")
 
