@@ -30,7 +30,7 @@ describe("test case Quote CRUD functions", () => {
     .send({
         text:quote.text
     })
-    .expect(404)
+    .expect(400)
   })
 
   test("should not accept update without ID",async ()=>{

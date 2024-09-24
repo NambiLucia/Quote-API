@@ -1,7 +1,11 @@
 const { describe, test, expect } = require('@jest/globals');
 const validateToken = require("../utils/validateToken");
 
+
+
 describe("verify if validate token function works", () => {
+
+
   test("if validate function works with a valid token", async () => {
   
 
@@ -21,11 +25,11 @@ describe("verify if validate token function works", () => {
     const next = jest.fn();
 
       
-      await validateToken(req, res, next);
+     validateToken(req, res, next);
 //when token is valid
-      //expect(next).toHaveBeenCalled();
-      //expect(res.status).not.toHaveBeenCalled();
-      //expect(res.json).not.toHaveBeenCalled();
+      expect(next).toHaveBeenCalled();
+      expect(res.status).not.toHaveBeenCalled();
+      expect(res.json).not.toHaveBeenCalled();
 
   });
 });
