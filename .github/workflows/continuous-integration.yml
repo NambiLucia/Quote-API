@@ -1,19 +1,15 @@
-name: Continuous Integration
-on: 
-  pull_request:  #event
-      branches:[develop2]
-  push:
-       branches:[develop2]
-env:
-    DATABASE_URL="postgresql://postgres:admin123@localhost:5432/mydb?schema=public"
+name: CI Pipeline
+
+on: [push, pull_request]
 
 jobs:
-  testing_api: #name of job
-      runs-on:ubuntu-latest #system api will run on
-  services:
-    postgres:
-      image:postgres:14-alpine
-       env:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: admin123
           POSTGRES_DB: mydb
