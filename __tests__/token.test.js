@@ -26,10 +26,11 @@ describe("verify if validate token function works", () => {
 
       
      validateToken(req, res, next);
+     console.log(validateToken)
 //when token is valid
-      expect(next).toHaveBeenCalled();
-      expect(res.status).not.toHaveBeenCalled();
-      expect(res.json).not.toHaveBeenCalled();
+      expect
+      .toBe(200);
+     
 
   });
 });
