@@ -10,12 +10,14 @@ const validateToken =(req,res,next)=>{
     //if token invalid,send to users
     if(authHeader){
         let token =authHeader.split(" ")[1]
+        console.log(token);
         jwt.verify(token,process.env.SECRET_KEY,(err,user)=>{
             if(err) {
+                console.log(err.message);
                 return res.json(err);
             }
             else{
-            console.log(user)
+                console.log("Token verified successfully.", user);
             next();
 
                 

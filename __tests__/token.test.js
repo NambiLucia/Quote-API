@@ -11,7 +11,7 @@ describe("verify if validate token function works", () => {
 
     const req = {
       headers: {
-        authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjlhYTM2LTUwZmYtNDFiZS1iM2I0LTJmYzNiMjU2NzZiMSIsInJvbGUiOiJzdWJzY3JpYmVyIiwiaWF0IjoxNzI1MTg5NTQxLCJleHAiOjE3MjUxOTMxNDF9.yqkKwDFIkwcLoqwCqfxLZzPIcVkgcQcDBqegcuj1nYg"
+        authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjlhYTM2LTUwZmYtNDFiZS1iM2I0LTJmYzNiMjU2NzZiMSIsInJvbGUiOiJzdWJzY3JpYmVyIiwiaWF0IjoxNzI3NDQxNzM1LCJleHAiOjE3Mjc0NDUzMzV9.O__9_TS4C3Ukv9g_VTP_iczR7plhac5qj5Hhp0oRsrI"
       }
     };
 
@@ -25,11 +25,10 @@ describe("verify if validate token function works", () => {
     const next = jest.fn();
 
       
-     validateToken(req, res, next);
+    await validateToken(req, res, next);
      console.log(validateToken)
 //when token is valid
-      expect
-      .toBe(200);
+expect(next).toHaveBeenCalled();
      
 
   });
